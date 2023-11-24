@@ -15,14 +15,14 @@ namespace curves {
 		}
 	}
 
-	Coord3D Circle::GetPoint(double t) const {
+	Point3D Circle::GetPoint(double t) const {
 		return {
 			radius_ * std::cos(t),
 			radius_ * std::sin(t),
 			0};
 	}
 
-	Coord3D Circle::GetDerivative(double t) const {
+	Vector3D Circle::GetDerivative(double t) const {
 		return {
 			-1* radius_ * std::sin(t),
 			radius_ * std::cos(t),
@@ -45,14 +45,14 @@ namespace curves {
 		}
 	}
 
-	Coord3D Ellipse::GetPoint(double t) const {
+	Point3D Ellipse::GetPoint(double t) const {
 		return {
 			radius_x_ * std::cos(t),
 			radius_y_ * std::sin(t),
 			0 };
 	}
 
-	Coord3D Ellipse::GetDerivative(double t) const {
+	Vector3D Ellipse::GetDerivative(double t) const {
 		return {
 			-1 * radius_x_ * std::sin(t),
 			radius_y_ * std::cos(t),
@@ -77,14 +77,14 @@ namespace curves {
 		}
 	}
 
-	Coord3D Helix::GetPoint(double t) const {
+	Point3D Helix::GetPoint(double t) const {
 		return {
 			radius_ * std::cos(t),
 			radius_ * std::sin(t),
 			step_ * t / (2 * M_PI)};
 	}
 
-	Coord3D Helix::GetDerivative(double t) const {
+	Vector3D Helix::GetDerivative(double t) const {
 		return {
 			-1 * radius_ * std::sin(t),
 			radius_ * std::cos(t),

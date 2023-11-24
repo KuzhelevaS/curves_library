@@ -15,4 +15,5 @@ endif()
 
 target_link_libraries(CurvesLib ${SYSTEM_LIBS})
 
+# Define param for macros section in curves.h
 target_compile_definitions(CurvesLib PRIVATE CURVES_DLL)

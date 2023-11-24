@@ -11,6 +11,12 @@ else()
 	add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 endif()
 
+if (WIN32)
+  # Make visible dll for exe. Must be before add_subdirectory.
+  set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+  set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+endif()
+
 add_subdirectory(curves_lib curves_lib_build)
 
 add_executable(${PROJECT_NAME} main.cpp)

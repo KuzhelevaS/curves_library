@@ -22,7 +22,13 @@
 #include <memory>
 
 namespace curves {
-	struct CURVES_EXPORT Coord3D {
+	struct CURVES_EXPORT Point3D {
+		double x = 0;
+		double y = 0;
+		double z = 0;
+	};
+
+	struct CURVES_EXPORT Vector3D {
 		double x = 0;
 		double y = 0;
 		double z = 0;
@@ -33,16 +39,16 @@ namespace curves {
 		Curve() = default;
 		virtual ~Curve() = default;
 
-		virtual Coord3D GetPoint(double t) const = 0;
-		virtual Coord3D GetDerivative(double t) const = 0;
+		virtual Point3D GetPoint(double t) const = 0;
+		virtual Vector3D GetDerivative(double t) const = 0;
 	};
 
 	class CURVES_EXPORT Circle : public Curve {
 	public:
 		explicit Circle(double radius);
 
-		Coord3D GetPoint(double t) const override;
-		Coord3D GetDerivative(double t) const override;
+		Point3D GetPoint(double t) const override;
+		Vector3D GetDerivative(double t) const override;
 		double GetRadius() const;
 
 	private:
@@ -53,8 +59,8 @@ namespace curves {
 	public:
 		explicit Ellipse(double radius_x, double radius_y);
 
-		Coord3D GetPoint(double t) const override;
-		Coord3D GetDerivative(double t) const override;
+		Point3D GetPoint(double t) const override;
+		Vector3D GetDerivative(double t) const override;
 		double GetRadiusX() const;
 		double GetRadiusY() const;
 
@@ -67,8 +73,8 @@ namespace curves {
 	public:
 		explicit Helix(double radius, double step);
 
-		Coord3D GetPoint(double t) const override;
-		Coord3D GetDerivative(double t) const override;
+		Point3D GetPoint(double t) const override;
+		Vector3D GetDerivative(double t) const override;
 		double GetRadius() const;
 		double GetStep() const;
 
